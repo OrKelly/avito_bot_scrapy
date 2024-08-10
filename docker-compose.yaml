@@ -1,0 +1,26 @@
+version: "2.0"
+
+services:
+  db:
+    container_name: avito_bot_db
+    image: postgres:14-alpine
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: always
+  bot:
+    container_name: avito_bot
+    build: .
+    volumes:
+      - ./:/bot
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  pgdata:

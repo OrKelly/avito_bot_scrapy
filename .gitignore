@@ -1,0 +1,7 @@
+migrations/versions/
+venv/
+__pycache__/
+.idea/
+media/
+source_pages/
+.env
